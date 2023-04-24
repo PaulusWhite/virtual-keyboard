@@ -15,6 +15,5 @@ module.exports = {
 		semi: ["warn", "always"],
 		"no-unused-vars": "warn",
 		"no-console": "warn",
-		indent: ["warn", 2],
 	},
 };
