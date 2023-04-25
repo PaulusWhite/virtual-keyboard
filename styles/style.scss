@@ -32,6 +32,7 @@ body {
 			display: flex;
 			margin-bottom: 5px;
 			.keyboard__key {
+				position: relative;
 				display: flex;
 				justify-content: center;
 				align-items: center;
@@ -41,10 +42,20 @@ body {
 				border-radius: 3px;
 				background-color: $blackColor;
 				cursor: pointer;
-				.keyboard__usualCharacter {
+				.keyboard__usualCharacter,
+				.keyboard__shiftCharacter {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
 					font-size: 18px;
 					font-weight: bold;
 					color: $beigeColor;
+				}
+				//css mod for characters
+				.keyboard__usualCharacter_disable,
+				.keyboard__shiftCharacter_disable {
+					display: none;
 				}
 			}
 			//css mod for keyboard__key

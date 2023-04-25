@@ -24,6 +24,7 @@ body {
       display: flex;
       margin-bottom: 5px; }
       .main .keyboard .keyboard__keyRow .keyboard__key {
+        position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -33,10 +34,18 @@ body {
         border-radius: 3px;
         background-color: #171718;
         cursor: pointer; }
-        .main .keyboard .keyboard__keyRow .keyboard__key .keyboard__usualCharacter {
+        .main .keyboard .keyboard__keyRow .keyboard__key .keyboard__usualCharacter,
+        .main .keyboard .keyboard__keyRow .keyboard__key .keyboard__shiftCharacter {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
           font-size: 18px;
           font-weight: bold;
           color: #e3d9c6; }
+        .main .keyboard .keyboard__keyRow .keyboard__key .keyboard__usualCharacter_disable,
+        .main .keyboard .keyboard__keyRow .keyboard__key .keyboard__shiftCharacter_disable {
+          display: none; }
       .main .keyboard .keyboard__keyRow .keyboard__key_fullGrow {
         flex-grow: 1; }
       .main .keyboard .keyboard__keyRow .keyboard__key_mediumGrow {
