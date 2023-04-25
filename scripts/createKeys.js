@@ -6,6 +6,7 @@ let inputCharactersOnKeys = (keyboard, lang, usualCharactersArr) => {
 			let key = keyRow.children[y];
 			let span = document.createElement("span");
 			span.className = `keyboard__usualCharacter keyboard__usualCharacter_${lang}`;
+			span.classList.add("keyboard__shiftCharacter_disable");
 			span.innerHTML = usualCharactersArr[i][y];
 			key.append(span);
 		}
@@ -16,7 +17,7 @@ let inputShiftCharactersOnKeys = (neededKeyIndexesArr, shiftCharactersArr, allCh
 	let keyIndexesArr = [...neededKeyIndexesArr];
 
 	for (let i = 0; i < 13; i++) keyIndexesArr.push(i); //these values are by default for every lang
-	
+
 	keyIndexesArr = keyIndexesArr.sort((a, b) => a - b);
 
 	keyIndexesArr.forEach((keyIndex) => {
@@ -31,7 +32,7 @@ let inputShiftCharactersOnKeys = (neededKeyIndexesArr, shiftCharactersArr, allCh
 	});
 };
 
-let createEngKeys = (keyboard) => {
+let createEngCharacters = (keyboard) => {
 	let usualCharactersArr = [
 		["`", 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "-", "=", "Backspace"],
 		["Tab", "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]", "\\", "Del"],
@@ -47,6 +48,23 @@ let createEngKeys = (keyboard) => {
 
 	let neededKeyIndexesArr = [25, 26, 27, 39, 40, 50, 51, 52]; // arr of indexes of keys for creation 'shift' characters
 	inputShiftCharactersOnKeys(neededKeyIndexesArr, shiftCharactersArr, allEngCharacters, "eng");
+};
+
+let createRusCharacters = (keyboard) => {
+	let usualCharactersArr = [
+		["ё", 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "-", "=", "Backspace"],
+		["Tab", "й", "ц", "у", "к", "е", "н", "г", "ш", "щ", "з", "х", "ъ", "\\", "Del"],
+		["CapsLock", "ф", "ы", "в", "а", "п", "р", "о", "л", "д", "ж", "э", "Enter"],
+		["Shift", "я", "ч", "с", "м", "и", "т", "ь", "б", "ю", "/", "&#11165;", "Shift"],
+		["Ctrl", "Win", "Alt", "Space", "Alt", "&#11164;", "&#11167;", "&#11166;", "Ctrl"],
+	];
+
+	inputCharactersOnKeys(keyboard, "rus", usualCharactersArr);
+	// prettier-ignore
+	let shiftCharactersArr = ["Ё","!","\"","№",";","%",":","?","*","(",")","_","+","/",","];
+	let allRusCharacters = keyboard.querySelectorAll(".keyboard__usualCharacter_rus");
+	let neededKeyIndexesArr = [27, 52]; // arr of indexes of keys for creation 'shift' characters
+	inputShiftCharactersOnKeys(neededKeyIndexesArr, shiftCharactersArr, allRusCharacters, "rus");
 };
 
 let setStylesForKeys = (index, i, key) => {
@@ -84,7 +102,8 @@ let createKeys = () => {
 		keyboard.append(keyRow);
 	});
 
-	createEngKeys(keyboard);
+	createEngCharacters(keyboard);
+	createRusCharacters(keyboard);
 };
 
 export default createKeys;
