@@ -12,6 +12,25 @@ let inputCharactersOnKeys = (keyboard, lang, usualCharactersArr) => {
 	}
 };
 
+let inputShiftCharactersOnKeys = (neededKeyIndexesArr, shiftCharactersArr, allCharacters, lang) => {
+	let keyIndexesArr = [...neededKeyIndexesArr];
+
+	for (let i = 0; i < 13; i++) keyIndexesArr.push(i); //these values are by default for every lang
+	
+	keyIndexesArr = keyIndexesArr.sort((a, b) => a - b);
+
+	keyIndexesArr.forEach((keyIndex) => {
+		let currentCharacter = allCharacters[keyIndex];
+		let parentKey = currentCharacter.parentElement;
+		let span = document.createElement("span");
+		span.className = `keyboard__shiftCharacter keyboard__shiftCharacter__${lang}`;
+		span.classList.add("keyboard__shiftCharacter_disable");
+		span.innerHTML = shiftCharactersArr[0];
+		shiftCharactersArr.shift();
+		parentKey.append(span);
+	});
+};
+
 let createEngKeys = (keyboard) => {
 	let usualCharactersArr = [
 		["`", 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "-", "=", "Backspace"],
@@ -26,28 +45,8 @@ let createEngKeys = (keyboard) => {
 	let shiftCharactersArr = ["~","!","@","#","$","%","^","&","*","(",")","_","+","{","}","|",":","\"","<",">","?"];
 	let allEngCharacters = keyboard.querySelectorAll(".keyboard__usualCharacter_eng");
 
-	allEngCharacters.forEach((character, index) => {
-		if (
-			index < 13 ||
-			index === 25 ||
-			index == 26 ||
-			index === 27 ||
-			index === 39 ||
-			index === 40 ||
-			index === 50 ||
-			index === 51 ||
-			index === 52
-		) {
-			let span = document.createElement("span");
-			span.className = "keyboard__shiftCharacter keyboard__shiftCharacter__eng";
-			span.classList.add("keyboard__shiftCharacter_disable");
-			span.innerHTML = shiftCharactersArr[0];
-			shiftCharactersArr.shift();
-
-			let parentKey = character.parentElement;
-			parentKey.append(span);
-		}
-	});
+	let neededKeyIndexesArr = [25, 26, 27, 39, 40, 50, 51, 52]; // arr of indexes of keys for creation 'shift' characters
+	inputShiftCharactersOnKeys(neededKeyIndexesArr, shiftCharactersArr, allEngCharacters, "eng");
 };
 
 let setStylesForKeys = (index, i, key) => {
