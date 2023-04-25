@@ -1,4 +1,11 @@
 $defaultFont: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+$blackColor: #171718;
+$beigeColor: #e3d9c6;
+$grayColor: #d1d1d1;
+
+body {
+	background-color: $beigeColor;
+}
 
 .main {
 	display: flex;
@@ -16,6 +23,41 @@ $defaultFont: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 	}
 	.keyboard {
 		width: 100%;
+		margin-top: 10px;
+		padding: 5px 5px 0 0;
+		border: solid $blackColor 2px;
+		background-color: $grayColor;
+		border-radius: 5px;
+		.keyboard__keyRow {
+			display: flex;
+			margin-bottom: 5px;
+			.keyboard__key {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 43px;
+				height: 43px;
+				margin-left: 5px;
+				border-radius: 3px;
+				background-color: $blackColor;
+				cursor: pointer;
+				.keyboard__usualCharacter {
+					font-size: 18px;
+					font-weight: bold;
+					color: $beigeColor;
+				}
+			}
+			//css mod for keyboard__key
+			.keyboard__key_fullGrow {
+				flex-grow: 1;
+			}
+			.keyboard__key_mediumGrow {
+				flex-grow: 0.85;
+			}
+			.keyboard__key_littleGrow {
+				flex-grow: 0.036;
+			}
+		}
 	}
 	.osInfo {
 		font-size: 18px;

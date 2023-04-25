@@ -1,3 +1,6 @@
+body {
+  background-color: #e3d9c6; }
+
 .main {
   display: flex;
   flex-direction: column;
@@ -11,6 +14,34 @@
   .main .textarea {
     width: 100%; }
   .main .keyboard {
-    width: 100%; }
+    width: 100%;
+    margin-top: 10px;
+    padding: 5px 5px 0 0;
+    border: solid #171718 2px;
+    background-color: #d1d1d1;
+    border-radius: 5px; }
+    .main .keyboard .keyboard__keyRow {
+      display: flex;
+      margin-bottom: 5px; }
+      .main .keyboard .keyboard__keyRow .keyboard__key {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 43px;
+        height: 43px;
+        margin-left: 5px;
+        border-radius: 3px;
+        background-color: #171718;
+        cursor: pointer; }
+        .main .keyboard .keyboard__keyRow .keyboard__key .keyboard__usualCharacter {
+          font-size: 18px;
+          font-weight: bold;
+          color: #e3d9c6; }
+      .main .keyboard .keyboard__keyRow .keyboard__key_fullGrow {
+        flex-grow: 1; }
+      .main .keyboard .keyboard__keyRow .keyboard__key_mediumGrow {
+        flex-grow: 0.85; }
+      .main .keyboard .keyboard__keyRow .keyboard__key_littleGrow {
+        flex-grow: 0.036; }
   .main .osInfo {
     font-size: 18px; }
