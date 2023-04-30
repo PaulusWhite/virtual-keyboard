@@ -1,4 +1,4 @@
-let defineCurrentLang = () => {
+let defineCurrentLangByDefault = () => {
   let currentLang = localStorage.getItem("virtKeyboardLang");
 
   if (currentLang === null) {
@@ -10,4 +10,4 @@ let defineCurrentLang = () => {
   allEngCharacters.forEach((character) => character.classList.remove("keyboard__character_disable"));
 };
 
-export default defineCurrentLang;
+export default defineCurrentLangByDefault;

@@ -1,13 +1,15 @@
 import createBasicStructure from "./createBasicStructure.js";
 import createKeys from "./createKeys.js";
-import defineCurrentLang from "./defineCurrentLang.js";
-import typeVirtKeyboardCharacters from "./typeVirtKeyboardCharacters.js";
+import defineCurrentLangByDefault from "./defineCurrentLangByDefault.js";
+import { typeVirtKeyboardCharacters } from "./typeVirtKeyboardCharacters.js";
+import clickShiftKey from "./clickShiftKey.js";
 
 let createVirtKeyboard = () => {
   createBasicStructure();
   createKeys();
-  defineCurrentLang();
+  defineCurrentLangByDefault();
   typeVirtKeyboardCharacters();
+  clickShiftKey();
 };
 
 export default createVirtKeyboard;

@@ -70,4 +70,4 @@ let typeVirtKeyboardCharacters = () => {
   });
 };
 
-export default typeVirtKeyboardCharacters;
+export { typeVirtKeyboardCharacters, clickCapslockKey };
