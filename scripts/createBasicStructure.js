@@ -12,6 +12,7 @@ let createBasicStructure = () => {
   textarea.className = "textarea";
   textarea.setAttribute("rows", 15);
   textarea.setAttribute("placeholder", "Type your text");
+  textarea.setAttribute("autofocus", "");
 
   let keyboardPanel = document.createElement("div");
   keyboardPanel.className = "keyboard";
