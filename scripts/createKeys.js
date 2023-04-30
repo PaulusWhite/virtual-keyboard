@@ -8,6 +8,8 @@ let inputCharactersOnKeys = (keyboard, lang, usualCharactersArr) => {
       span.className = `keyboard__character keyboard__character_${lang}`;
       span.classList.add("keyboard__character_disable");
       span.innerHTML = usualCharactersArr[i][y];
+      if (usualCharactersArr[i][y] === "Shift") key.setAttribute("id", "shift");
+      if (usualCharactersArr[i][y] === "CapsLock") key.setAttribute("id", "capsLock");
       key.append(span);
     }
   }

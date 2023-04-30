@@ -12,8 +12,8 @@ let removeCharacter = (textarea, keyVlaue) => {
   textarea.setSelectionRange(textCursor, textCursor);
 };
 
-let clickCapslockKey = (keyboard, currentCharacter) => {
-  let capsLockKey = currentCharacter.closest(".keyboard__key");
+let clickCapslockKey = (keyboard) => {
+  let capsLockKey = keyboard.querySelector("#capsLock");
   let allKeyCharacters = keyboard.querySelectorAll(".keyboard__character");
 
   allKeyCharacters.forEach((character) => {
@@ -30,9 +30,7 @@ let clickCapslockKey = (keyboard, currentCharacter) => {
   capsLockKey.classList.toggle("keyboard__key_active");
 };
 
-let clickSpecialKeys = (textarea, currentCharacter, keyboard) => {
-  let keyValue = currentCharacter.textContent;
-
+let clickSpecialKeys = (textarea, keyValue, keyboard) => {
   let simpleSpecialKeysObj = {
     Tab: "    ",
     Enter: "\n",
@@ -44,7 +42,7 @@ let clickSpecialKeys = (textarea, currentCharacter, keyboard) => {
   } else {
     if (keyValue === "Backspace") removeCharacter(textarea, keyValue);
     if (keyValue === "Del") removeCharacter(textarea, keyValue);
-    if (keyValue === "CapsLock") clickCapslockKey(keyboard, currentCharacter);
+    if (keyValue === "CapsLock") clickCapslockKey(keyboard);
     //There are no events for such buttons like Shift, Ctrl, Win, Alt here
   }
 };
@@ -67,7 +65,7 @@ let typeVirtKeyboardCharacters = () => {
     if (currentCharacter.textContent.length === 1) {
       textarea.value += currentCharacter.textContent;
     } else {
-      clickSpecialKeys(textarea, currentCharacter, keyboard);
+      clickSpecialKeys(textarea, currentCharacter.textContent, keyboard);
     }
   });
 };
