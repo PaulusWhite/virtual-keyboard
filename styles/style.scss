@@ -78,6 +78,8 @@ body {
       }
       .keyboard__key_active {
         background-color: $redColor;
+        box-shadow: 0 0 7px 1px $redColor;
+        transform: scale(0.95);
       }
     }
   }

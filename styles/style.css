@@ -58,6 +58,8 @@ body {
       .main .keyboard .keyboard__keyRow .keyboard__key_littleGrow {
         flex-grow: 0.036; }
       .main .keyboard .keyboard__keyRow .keyboard__key_active {
-        background-color: #f53838; }
+        background-color: #f53838;
+        box-shadow: 0 0 7px 1px #f53838;
+        transform: scale(0.95); }
   .main .osInfo {
     font-size: 18px; }

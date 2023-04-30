@@ -1,4 +1,6 @@
-let inputCharactersOnKeys = (keyboard, lang, usualCharactersArr) => {
+import { setKeyCodes, setCoupleKeyCodes } from "./setKeyCodes.js";
+
+let inputCharactersOnKeys = (keyboard, lang, usualCharactersArr, flag) => {
   for (let i = 0; i < keyboard.children.length; i++) {
     let keyRow = keyboard.children[i];
 
@@ -8,12 +10,16 @@ let inputCharactersOnKeys = (keyboard, lang, usualCharactersArr) => {
       span.className = `keyboard__character keyboard__character_${lang}`;
       span.classList.add("keyboard__character_disable");
       span.innerHTML = usualCharactersArr[i][y];
+      if (flag) setKeyCodes(key, usualCharactersArr[i][y]);
       if (usualCharactersArr[i][y] === "Shift") key.setAttribute("id", "shift");
       if (usualCharactersArr[i][y] === "CapsLock") key.setAttribute("id", "capsLock");
-      if (usualCharactersArr[i][y] === "Alt") key.setAttribute("id", "capsLock");
+      if (usualCharactersArr[i][y] === "Alt") key.setAttribute("id", "alt");
+      if (usualCharactersArr[i][y] === "Ctrl") key.setAttribute("id", "ctrl");
       key.append(span);
     }
   }
+
+  setCoupleKeyCodes();
 };
 
 let inputShiftCharactersOnKeys = (neededKeyIndexesArr, shiftCharactersArr, allCharacters, lang) => {
@@ -44,7 +50,7 @@ let createEngCharacters = (keyboard) => {
     ["Ctrl", "Win", "Alt", "Space", "Alt", "&#11164;", "&#11167;", "&#11166;", "Ctrl"],
   ];
 
-  inputCharactersOnKeys(keyboard, "eng", usualCharactersArr);
+  inputCharactersOnKeys(keyboard, "eng", usualCharactersArr, true);
   // prettier-ignore
   let shiftCharactersArr = ["~","!","@","#","$","%","^","&","*","(",")","_","+","{","}","|",":","\"","<",">","?"];
   let allEngCharacters = keyboard.querySelectorAll(".keyboard__character_eng");
