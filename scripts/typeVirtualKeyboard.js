@@ -12,14 +12,15 @@ let removeCharacter = (textarea, keyVlaue) => {
   textarea.setSelectionRange(textCursor, textCursor);
 };
 
-let clickCapslockKey = (keyboard) => {
+let clickCapslockKey = (keyboard, flag) => {
+  //flag is needed here for script typePhysicalKeyboard.js only
   let capsLockKey = keyboard.querySelector("#capsLock");
   let allKeyCharacters = keyboard.querySelectorAll(".keyboard__character");
 
   allKeyCharacters.forEach((character) => {
     let characterValue = character.textContent;
     if (characterValue.length === 1) {
-      if (capsLockKey.classList.contains("keyboard__key_active")) {
+      if (capsLockKey.classList.contains("keyboard__key_active") || flag === "preventLowerCase") {
         character.textContent = characterValue.toLowerCase();
       } else {
         character.textContent = characterValue.toUpperCase();
@@ -27,6 +28,7 @@ let clickCapslockKey = (keyboard) => {
     }
   });
 
+  if (flag === "falseClass" || flag === "preventLowerCase") return;
   capsLockKey.classList.toggle("keyboard__key_active");
 };
 
@@ -70,4 +72,4 @@ let typeVirtualKeyboard = () => {
   });
 };
 
-export { typeVirtualKeyboard, clickCapslockKey };
+export { typeVirtualKeyboard, clickCapslockKey, clickSpecialKeys };

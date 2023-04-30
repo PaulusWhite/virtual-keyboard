@@ -28,4 +28,4 @@ let clickShiftKey = () => {
   });
 };
 
-export default clickShiftKey;
+export { clickShiftKey, displayShiftCharacters };
