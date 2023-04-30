@@ -47,7 +47,7 @@ let clickSpecialKeys = (textarea, keyValue, keyboard) => {
   }
 };
 
-let typeVirtKeyboardCharacters = () => {
+let typeVirtualKeyboard = () => {
   let keyboard = document.querySelector(".keyboard");
   let textarea = document.querySelector(".textarea");
 
@@ -70,4 +70,4 @@ let typeVirtKeyboardCharacters = () => {
   });
 };
 
-export { typeVirtKeyboardCharacters, clickCapslockKey };
+export { typeVirtualKeyboard, clickCapslockKey };
