@@ -13,7 +13,7 @@ let removeCharacter = (textarea, keyVlaue) => {
 };
 
 // let clickCapslock = (keyboard) => {
-//   let allKeyCharacters = keyboard.querySelectorAll(".keyboard__usualCharacter");
+//   let allKeyCharacters = keyboard.querySelectorAll(".keyboard__character");
 
 // };
 
@@ -46,9 +46,7 @@ let typeVirtKeyboardCharacters = () => {
 
     if (!currentKey) return;
 
-    let currentCharacter = currentKey.querySelector(
-      ".keyboard__usualCharacter:not(.keyboard__usualCharacter_disable)"
-    );
+    let currentCharacter = currentKey.querySelector(".keyboard__character:not(.keyboard__character_disable)");
 
     if (currentCharacter.textContent.length === 1) {
       textarea.value += currentCharacter.textContent;

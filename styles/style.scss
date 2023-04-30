@@ -51,7 +51,7 @@ body {
           transform: scale(0.95);
         }
         cursor: pointer;
-        .keyboard__usualCharacter,
+        .keyboard__character,
         .keyboard__shiftCharacter {
           position: absolute;
           top: 50%;
@@ -61,7 +61,7 @@ body {
           color: $beigeColor;
         }
         //css mod for characters
-        .keyboard__usualCharacter_disable,
+        .keyboard__character_disable,
         .keyboard__shiftCharacter_disable {
           display: none;
         }

@@ -5,8 +5,8 @@ let inputCharactersOnKeys = (keyboard, lang, usualCharactersArr) => {
     for (let y = 0; y < keyRow.children.length; y++) {
       let key = keyRow.children[y];
       let span = document.createElement("span");
-      span.className = `keyboard__usualCharacter keyboard__usualCharacter_${lang}`;
-      span.classList.add("keyboard__usualCharacter_disable");
+      span.className = `keyboard__character keyboard__character_${lang}`;
+      span.classList.add("keyboard__character_disable");
       span.innerHTML = usualCharactersArr[i][y];
       key.append(span);
     }
@@ -44,7 +44,7 @@ let createEngCharacters = (keyboard) => {
   inputCharactersOnKeys(keyboard, "eng", usualCharactersArr);
   // prettier-ignore
   let shiftCharactersArr = ["~","!","@","#","$","%","^","&","*","(",")","_","+","{","}","|",":","\"","<",">","?"];
-  let allEngCharacters = keyboard.querySelectorAll(".keyboard__usualCharacter_eng");
+  let allEngCharacters = keyboard.querySelectorAll(".keyboard__character_eng");
 
   let neededKeyIndexesArr = [25, 26, 27, 39, 40, 50, 51, 52]; // arr of indexes of keys for creation 'shift' characters
   inputShiftCharactersOnKeys(neededKeyIndexesArr, shiftCharactersArr, allEngCharacters, "eng");
@@ -62,7 +62,7 @@ let createRusCharacters = (keyboard) => {
   inputCharactersOnKeys(keyboard, "rus", usualCharactersArr);
   // prettier-ignore
   let shiftCharactersArr = ["Ё","!","\"","№",";","%",":","?","*","(",")","_","+","/",","];
-  let allRusCharacters = keyboard.querySelectorAll(".keyboard__usualCharacter_rus");
+  let allRusCharacters = keyboard.querySelectorAll(".keyboard__character_rus");
   let neededKeyIndexesArr = [27, 52]; // arr of indexes of keys for creation 'shift' characters
   inputShiftCharactersOnKeys(neededKeyIndexesArr, shiftCharactersArr, allRusCharacters, "rus");
 };

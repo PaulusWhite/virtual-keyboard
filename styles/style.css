@@ -49,7 +49,7 @@ body {
   box-shadow: 0 0 7px 1px #f53838;
   transform: scale(0.95);
 }
-.main .keyboard .keyboard__keyRow .keyboard__key .keyboard__usualCharacter,
+.main .keyboard .keyboard__keyRow .keyboard__key .keyboard__character,
 .main .keyboard .keyboard__keyRow .keyboard__key .keyboard__shiftCharacter {
   position: absolute;
   top: 50%;
@@ -58,7 +58,7 @@ body {
   font-size: 20px;
   color: #e3d9c6;
 }
-.main .keyboard .keyboard__keyRow .keyboard__key .keyboard__usualCharacter_disable,
+.main .keyboard .keyboard__keyRow .keyboard__key .keyboard__character_disable,
 .main .keyboard .keyboard__keyRow .keyboard__key .keyboard__shiftCharacter_disable {
   display: none;
 }

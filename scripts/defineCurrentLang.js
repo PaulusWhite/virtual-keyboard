@@ -6,8 +6,8 @@ let defineCurrentLang = () => {
     localStorage.setItem("virtKeyboardLang", currentLang);
   }
 
-  let allEngCharacters = document.querySelectorAll(`.keyboard__usualCharacter_${currentLang}`);
-  allEngCharacters.forEach((character) => character.classList.remove("keyboard__usualCharacter_disable"));
+  let allEngCharacters = document.querySelectorAll(`.keyboard__character_${currentLang}`);
+  allEngCharacters.forEach((character) => character.classList.remove("keyboard__character_disable"));
 };
 
 export default defineCurrentLang;
