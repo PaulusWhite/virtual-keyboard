@@ -10,6 +10,7 @@ let inputCharactersOnKeys = (keyboard, lang, usualCharactersArr) => {
       span.innerHTML = usualCharactersArr[i][y];
       if (usualCharactersArr[i][y] === "Shift") key.setAttribute("id", "shift");
       if (usualCharactersArr[i][y] === "CapsLock") key.setAttribute("id", "capsLock");
+      if (usualCharactersArr[i][y] === "Alt") key.setAttribute("id", "capsLock");
       key.append(span);
     }
   }
