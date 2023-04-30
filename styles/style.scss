@@ -76,6 +76,9 @@ body {
       .keyboard__key_littleGrow {
         flex-grow: 0.036;
       }
+      .keyboard__key_active {
+        background-color: $redColor;
+      }
     }
   }
   .osInfo {

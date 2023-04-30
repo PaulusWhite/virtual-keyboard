@@ -19,7 +19,7 @@ let clickCapslockKey = (keyboard, currentCharacter) => {
   allKeyCharacters.forEach((character) => {
     let characterValue = character.textContent;
     if (characterValue.length === 1) {
-      if (capsLockKey.classList.contains("keyboard__key_activeCapsLock")) {
+      if (capsLockKey.classList.contains("keyboard__key_active")) {
         character.textContent = characterValue.toLowerCase();
       } else {
         character.textContent = characterValue.toUpperCase();
@@ -27,7 +27,7 @@ let clickCapslockKey = (keyboard, currentCharacter) => {
     }
   });
 
-  capsLockKey.classList.toggle("keyboard__key_activeCapsLock");
+  capsLockKey.classList.toggle("keyboard__key_active");
 };
 
 let clickSpecialKeys = (textarea, currentCharacter, keyboard) => {
