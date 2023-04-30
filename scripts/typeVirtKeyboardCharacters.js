@@ -12,14 +12,29 @@ let removeCharacter = (textarea, keyVlaue) => {
   textarea.setSelectionRange(textCursor, textCursor);
 };
 
-// let clickCapslock = (keyboard) => {
-//   let allKeyCharacters = keyboard.querySelectorAll(".keyboard__character");
+let clickCapslockKey = (keyboard, currentCharacter) => {
+  let capsLockKey = currentCharacter.closest(".keyboard__key");
+  let allKeyCharacters = keyboard.querySelectorAll(".keyboard__character");
 
-// };
+  allKeyCharacters.forEach((character) => {
+    let characterValue = character.textContent;
+    if (characterValue.length === 1) {
+      if (capsLockKey.classList.contains("keyboard__key_activeCapsLock")) {
+        character.textContent = characterValue.toLowerCase();
+      } else {
+        character.textContent = characterValue.toUpperCase();
+      }
+    }
+  });
 
-let clickSpecialKeys = (textarea, keyValue, keyboard) => {
+  capsLockKey.classList.toggle("keyboard__key_activeCapsLock");
+};
+
+let clickSpecialKeys = (textarea, currentCharacter, keyboard) => {
+  let keyValue = currentCharacter.textContent;
+
   let simpleSpecialKeysObj = {
-    Tab: "\t",
+    Tab: "    ",
     Enter: "\n",
     Space: " ",
   };
@@ -29,7 +44,8 @@ let clickSpecialKeys = (textarea, keyValue, keyboard) => {
   } else {
     if (keyValue === "Backspace") removeCharacter(textarea, keyValue);
     if (keyValue === "Del") removeCharacter(textarea, keyValue);
-    // if (keyValue === "CapsLock") clickCapslock(keyboard);
+    if (keyValue === "CapsLock") clickCapslockKey(keyboard, currentCharacter);
+    //There are no events for such buttons like Shift, Ctrl, Win, Alt here
   }
 };
 
@@ -51,7 +67,7 @@ let typeVirtKeyboardCharacters = () => {
     if (currentCharacter.textContent.length === 1) {
       textarea.value += currentCharacter.textContent;
     } else {
-      clickSpecialKeys(textarea, currentCharacter.textContent, keyboard);
+      clickSpecialKeys(textarea, currentCharacter, keyboard);
     }
   });
 };
