@@ -1,4 +1,4 @@
-import { clickCapslockKey } from "./typeVirtKeyboardCharacters.js";
+import { clickCapslockKey } from "./typeVirtualKeyboard.js";
 
 let displayShiftCharacters = (keyboard) => {
   let currentLang = localStorage.getItem("virtKeyboardLang");
