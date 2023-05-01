@@ -85,7 +85,11 @@ body {
       }
     }
   }
-  .osInfo {
+  .osInfo,
+  .shortcutInfo {
     font-size: 18px;
+  }
+  .shortcutInfo {
+    margin: 0;
   }
 }

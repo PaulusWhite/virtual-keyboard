@@ -18,10 +18,13 @@ let createBasicStructure = () => {
   keyboardPanel.className = "keyboard";
 
   let osInfo = document.createElement("p"); //operation system
+  let shortcutInfo = document.createElement("p");
   osInfo.className = "osInfo";
   osInfo.innerHTML = `Keyboard is created in operating system ${osValue}`;
+  shortcutInfo.innerHTML = "To change the language do press left Ctrl + left Alt at the same time";
+  shortcutInfo.className = "shortcutInfo";
 
-  mainContainer.append(heading, textarea, keyboardPanel, osInfo);
+  mainContainer.append(heading, textarea, keyboardPanel, osInfo, shortcutInfo);
 
   body.prepend(mainContainer);
 };

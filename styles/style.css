@@ -63,5 +63,8 @@ body {
         background-color: #f53838;
         box-shadow: 0 0 7px 1px #f53838;
         transform: scale(0.95); }
-  .main .osInfo {
+  .main .osInfo,
+  .main .shortcutInfo {
     font-size: 18px; }
+  .main .shortcutInfo {
+    margin: 0; }
