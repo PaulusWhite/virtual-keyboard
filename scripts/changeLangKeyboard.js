@@ -7,27 +7,26 @@ let changeLangValue = () => {
   localStorage.setItem("virtKeyboardLang", newCurrentLang);
 };
 
+let isKeysPressed = (pressedKeys) => {
+  return (
+    (pressedKeys["ControlLeft"] || pressedKeys["ControlRight"]) &&
+    (pressedKeys["AltLeft"] || pressedKeys["AltRight"])
+  );
+};
+
 let changeLangKeyboard = () => {
   let pressedKeys = {};
 
   document.addEventListener("keydown", (event) => {
     let code = event.code;
 
-    if (
-      (pressedKeys["ControlLeft"] || pressedKeys["ControlRight"]) &&
-      (pressedKeys["AltLeft"] || pressedKeys["AltRight"])
-    ) {
-      return;
-    }
+    if (isKeysPressed(pressedKeys)) return;
 
     if (code === "ControlLeft" || code === "ControlRight" || code === "AltLeft" || code === "AltRight") {
       pressedKeys[code] = true;
     }
 
-    if (
-      (pressedKeys["ControlLeft"] || pressedKeys["ControlRight"]) &&
-      (pressedKeys["AltLeft"] || pressedKeys["AltRight"])
-    ) {
+    if (isKeysPressed(pressedKeys)) {
       changeLangValue();
       defineCurrentLangByDefault(true);
       return;
