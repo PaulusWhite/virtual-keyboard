@@ -1,20 +1,18 @@
-let removeCharacter = (textarea, keyVlaue) => {
-  let textCursor = textarea.selectionStart;
+let removeCharacter = (textarea, keyVlaue, textCursorIndex, textareaValueArr) => {
   let selectedText = window.getSelection().toString();
-  let textareaValueArr = textarea.value.split("");
   let cursorOffset = selectedText.length ? 0 : 1;
 
   if (keyVlaue === "Backspace") {
-    textareaValueArr.splice(textCursor - cursorOffset, 1 + selectedText.length);
-  } else textareaValueArr.splice(textCursor, 1 + selectedText.length);
+    textareaValueArr.splice(textCursorIndex - cursorOffset, 1 + selectedText.length);
+  } else textareaValueArr.splice(textCursorIndex, 1 + selectedText.length);
 
   let newTextareaValue = textareaValueArr.join("");
   textarea.value = "";
   textarea.value = newTextareaValue;
 
   if (keyVlaue === "Backspace") {
-    textarea.setSelectionRange(textCursor - cursorOffset, textCursor - cursorOffset);
-  } else textarea.setSelectionRange(textCursor, textCursor);
+    textarea.setSelectionRange(textCursorIndex - cursorOffset, textCursorIndex - cursorOffset);
+  } else textarea.setSelectionRange(textCursorIndex, textCursorIndex);
 };
 
 let clickCapslockKey = (keyboard, flag) => {
@@ -38,6 +36,8 @@ let clickCapslockKey = (keyboard, flag) => {
 };
 
 let clickSpecialKeys = (textarea, keyValue, keyboard) => {
+  let textCursorIndex = textarea.selectionStart;
+  let textareaValueArr = textarea.value.split("");
   let simpleSpecialKeysObj = {
     Tab: "    ",
     Enter: "\n",
@@ -45,10 +45,17 @@ let clickSpecialKeys = (textarea, keyValue, keyboard) => {
   };
 
   if (simpleSpecialKeysObj[keyValue]) {
-    textarea.value += simpleSpecialKeysObj[keyValue];
+    let currentCharacter = textareaValueArr[textCursorIndex - 1];
+    if (currentCharacter) {
+      textareaValueArr[textCursorIndex - 1] = currentCharacter + simpleSpecialKeysObj[keyValue];
+      let newTextareaValue = textareaValueArr.join("");
+      textarea.value = newTextareaValue;
+      let finishTextCursorIndex = textCursorIndex + simpleSpecialKeysObj[keyValue].length;
+      textarea.setSelectionRange(finishTextCursorIndex, finishTextCursorIndex);
+    } else textarea.value += simpleSpecialKeysObj[keyValue];
   } else {
-    if (keyValue === "Backspace") removeCharacter(textarea, keyValue);
-    if (keyValue === "Del") removeCharacter(textarea, keyValue);
+    if (keyValue === "Backspace") removeCharacter(textarea, keyValue, textCursorIndex, textareaValueArr);
+    if (keyValue === "Del") removeCharacter(textarea, keyValue, textCursorIndex, textareaValueArr);
     if (keyValue === "CapsLock") clickCapslockKey(keyboard);
     //There are no events for such buttons like Shift, Ctrl, Win, Alt here
   }
