@@ -16,7 +16,8 @@ let removeCharacter = (textarea, keyVlaue, textCursorIndex, textareaValueArr) =>
 };
 
 let clickCapslockKey = (keyboard, flag) => {
-  //flag is needed here for script typePhysicalKeyboard.js only
+  //flag is needed here for using this function in scripts typePhysicalKeyboard.js and clickShiftKey.js
+  //correctly
   let capsLockKey = keyboard.querySelector("#capsLock");
   let allKeyCharacters = keyboard.querySelectorAll(".keyboard__character");
 
@@ -83,7 +84,6 @@ let typeVirtualKeyboard = () => {
     if (!currentCharacter) {
       currentCharacter = currentKey.querySelector(".keyboard__shiftCharacter:not(.keyboard__character_disable)");
     }
-    
     let keyValue = currentCharacter.textContent;
 
     if (keyValue.length === 1) {

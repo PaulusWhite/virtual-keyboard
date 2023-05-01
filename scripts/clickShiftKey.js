@@ -17,12 +17,12 @@ let clickShiftKey = () => {
 
   shiftKeys.forEach((shiftKey) => {
     shiftKey.addEventListener("mousedown", () => {
-      clickCapslockKey(keyboard);
+      clickCapslockKey(keyboard, "falseClass");
       displayShiftCharacters(keyboard);
     });
 
     shiftKey.addEventListener("mouseup", () => {
-      clickCapslockKey(keyboard);
+      clickCapslockKey(keyboard, "preventLowerCase");
       displayShiftCharacters(keyboard);
     });
   });
