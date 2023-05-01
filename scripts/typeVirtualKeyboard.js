@@ -80,6 +80,9 @@ let typeVirtualKeyboard = () => {
 
     if (!currentKey) return;
 
+    //this is needed to remove active clas which can be saven after alt+tab
+    if (currentKey.classList.contains("keyboard__key_active")) currentKey.classList.remove("keyboard__key_active");
+
     let currentCharacter = currentKey.querySelector(".keyboard__character:not(.keyboard__character_disable)");
     if (!currentCharacter) {
       currentCharacter = currentKey.querySelector(".keyboard__shiftCharacter:not(.keyboard__shiftCharacter_disable)");
