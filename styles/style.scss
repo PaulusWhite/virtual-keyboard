@@ -21,6 +21,8 @@ body {
   }
   .textarea {
     width: 100%;
+    resize: none;
+    font-size: 18px;
   }
   .keyboard {
     width: 100%;
@@ -42,7 +44,7 @@ body {
         margin-left: 5px;
         border-radius: 3px;
         background-color: $blackColor;
-        transition: 0.1s;
+        transition: 0.2s;
         &:hover {
           background-color: $redColor;
         }
