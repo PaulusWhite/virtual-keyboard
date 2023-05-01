@@ -24,6 +24,8 @@ let typePhysicalKeyboard = () => {
 
   document.addEventListener("keydown", (event) => {
     let code = event.code;
+    let textCursorIndex = textarea.selectionStart;
+    let textareaValueArr = textarea.value.split("");
 
     if (
       code === "Tab" ||
@@ -36,7 +38,8 @@ let typePhysicalKeyboard = () => {
     }
 
     if (code === "Tab") {
-      clickSpecialKeys(textarea, code);
+      event.preventDefault();
+      clickSpecialKeys(textarea, code, keyboard, textCursorIndex, textareaValueArr);
     }
 
     if (pressedKeys[event.code]) return;
