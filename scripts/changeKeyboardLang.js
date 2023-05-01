@@ -8,10 +8,7 @@ let changeLangValue = () => {
 };
 
 let isKeysPressed = (pressedKeys) => {
-  return (
-    (pressedKeys["ControlLeft"] || pressedKeys["ControlRight"]) &&
-    (pressedKeys["AltLeft"] || pressedKeys["AltRight"])
-  );
+  return pressedKeys["ControlLeft"] && pressedKeys["AltLeft"];
 };
 
 let changeKeyboardLang = () => {
@@ -22,7 +19,7 @@ let changeKeyboardLang = () => {
 
     if (isKeysPressed(pressedKeys)) return;
 
-    if (code === "ControlLeft" || code === "ControlRight" || code === "AltLeft" || code === "AltRight") {
+    if (code === "ControlLeft" || code === "AltLeft") {
       pressedKeys[code] = true;
     }
 

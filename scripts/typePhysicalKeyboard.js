@@ -16,7 +16,13 @@ let typePhysicalKeyboard = () => {
   document.addEventListener("keydown", (event) => {
     let code = event.code;
 
-    if (code === "Tab" || code === "ControlLeft" || code === "ControlRight") {
+    if (
+      code === "Tab" ||
+      code === "ControlLeft" ||
+      code === "ControlRight" ||
+      code === "AltLeft" ||
+      code === "AltRight"
+    ) {
       event.preventDefault();
     }
 
