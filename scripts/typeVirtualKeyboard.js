@@ -82,7 +82,7 @@ let typeVirtualKeyboard = () => {
 
     let currentCharacter = currentKey.querySelector(".keyboard__character:not(.keyboard__character_disable)");
     if (!currentCharacter) {
-      currentCharacter = currentKey.querySelector(".keyboard__shiftCharacter:not(.keyboard__character_disable)");
+      currentCharacter = currentKey.querySelector(".keyboard__shiftCharacter:not(.keyboard__shiftCharacter_disable)");
     }
     let keyValue = currentCharacter.textContent;
 
