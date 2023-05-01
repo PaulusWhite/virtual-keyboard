@@ -1,6 +1,6 @@
 $defaultFont: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 $blackColor: #171718;
-$beigeColor: #e3d9c6;
+$beigeColor: #f8d2ac;
 $grayColor: #d1d1d1;
 $redColor: rgb(245, 56, 56);
 
@@ -44,13 +44,13 @@ body {
         margin-left: 5px;
         border-radius: 3px;
         background-color: $blackColor;
-        transition: 0.2s;
+        transition: 0.1s;
         &:hover {
           background-color: $redColor;
         }
         &:active {
           box-shadow: 0 0 7px 1px $redColor;
-          transform: scale(0.95);
+          transform: scale(0.9);
         }
         cursor: pointer;
         .keyboard__character,
@@ -81,7 +81,7 @@ body {
       .keyboard__key_active {
         background-color: $redColor;
         box-shadow: 0 0 7px 1px $redColor;
-        transform: scale(0.95);
+        transform: scale(0.9);
       }
     }
   }
