@@ -1,17 +1,19 @@
 let removeCharacter = (textarea, keyVlaue) => {
   let textCursor = textarea.selectionStart;
+  let selectedText = window.getSelection().toString();
   let textareaValueArr = textarea.value.split("");
+  let cursorOffset = selectedText.length ? 0 : 1;
 
   if (keyVlaue === "Backspace") {
-    textareaValueArr.splice(textCursor - 1, 1);
-  } else textareaValueArr.splice(textCursor, 1);
+    textareaValueArr.splice(textCursor - cursorOffset, 1 + selectedText.length);
+  } else textareaValueArr.splice(textCursor, 1 + selectedText.length);
 
   let newTextareaValue = textareaValueArr.join("");
   textarea.value = "";
   textarea.value = newTextareaValue;
 
   if (keyVlaue === "Backspace") {
-    textarea.setSelectionRange(textCursor - 1, textCursor - 1);
+    textarea.setSelectionRange(textCursor - cursorOffset, textCursor - cursorOffset);
   } else textarea.setSelectionRange(textCursor, textCursor);
 };
 
