@@ -1,5 +1,5 @@
 let createBasicStructure = () => {
-  let osValue = navigator.userAgentData.platform;
+  let osValue = "Windows";
   let body = document.body;
   let mainContainer = document.createElement("main");
   mainContainer.className = "main";
@@ -20,7 +20,7 @@ let createBasicStructure = () => {
   let osInfo = document.createElement("p"); //operation system
   let shortcutInfo = document.createElement("p");
   osInfo.className = "osInfo";
-  osInfo.innerHTML = `Keyboard is created in operating system ${osValue}`;
+  osInfo.innerHTML = `Keyboard was created in operating system ${osValue}`;
   shortcutInfo.innerHTML = "To change the language do press left Ctrl + left Alt at the same time";
   shortcutInfo.className = "shortcutInfo";
 
