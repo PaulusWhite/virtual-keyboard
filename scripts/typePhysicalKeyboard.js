@@ -14,9 +14,11 @@ let typePhysicalKeyboard = () => {
   let pressedKeys = {};
 
   document.addEventListener("keydown", (event) => {
-    event.preventDefault();
-
     let code = event.code;
+
+    if (code === "Tab" || code === "ControlLeft" || code === "ControlRight") {
+      event.preventDefault();
+    }
 
     if (code === "Tab") {
       clickSpecialKeys(textarea, code);
