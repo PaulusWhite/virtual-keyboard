@@ -14,7 +14,7 @@ let isKeysPressed = (pressedKeys) => {
   );
 };
 
-let changeLangKeyboard = () => {
+let changeKeyboardLang = () => {
   let pressedKeys = {};
 
   document.addEventListener("keydown", (event) => {
@@ -38,4 +38,4 @@ let changeLangKeyboard = () => {
   });
 };
 
-export default changeLangKeyboard;
+export default changeKeyboardLang;

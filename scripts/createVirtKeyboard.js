@@ -4,7 +4,7 @@ import defineCurrentLangByDefault from "./defineCurrentLangByDefault.js";
 import { typeVirtualKeyboard } from "./typeVirtualKeyboard.js";
 import typePhysicalKeyboard from "./typePhysicalKeyboard.js";
 import { clickShiftKey } from "./clickShiftKey.js";
-import changeLangKeyboard from "./changeLangKeyboard.js";
+import changeKeyboardLang from "./changeKeyboardLang.js";
 
 let createVirtKeyboard = () => {
   createBasicStructure();
@@ -13,7 +13,7 @@ let createVirtKeyboard = () => {
   typeVirtualKeyboard();
   typePhysicalKeyboard();
   clickShiftKey();
-  changeLangKeyboard();
+  changeKeyboardLang();
 };
 
 export default createVirtKeyboard;
