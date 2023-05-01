@@ -7,6 +7,15 @@ let toggleKeyClass = (keyCode) => {
   pressedKey.classList.toggle("keyboard__key_active");
 };
 
+let disableKeys = () => {
+  //this function is needed for removing active class from the keys after
+  //Alt + Tab and Shift + Alt shortcuts of the computer
+  let leftCtrlKey = document.querySelector(".keyboard__key[data-keycode=ControlLeft]");
+  let tabKey = document.querySelector(".keyboard__key[data-keycode=Tab]");
+  leftCtrlKey.classList.remove("keyboard__key_active");
+  tabKey.classList.remove("keyboard__key_active");
+};
+
 let typePhysicalKeyboard = () => {
   let keyboard = document.querySelector(".keyboard");
   let textarea = document.querySelector(".textarea");
@@ -47,6 +56,7 @@ let typePhysicalKeyboard = () => {
     let code = event.code;
 
     toggleKeyClass(code);
+    disableKeys();
 
     if (code === "ShiftLeft" || code === "ShiftRight") {
       displayShiftCharacters(keyboard);
