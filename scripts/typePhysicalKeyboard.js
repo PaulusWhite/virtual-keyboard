@@ -40,6 +40,7 @@ let typePhysicalKeyboard = () => {
     toggleKeyClass(code);
 
     if (code === "ShiftLeft" || code === "ShiftRight") {
+      displayShiftCharacters(keyboard);
       clickCapslockKey(keyboard, "preventLowerCase");
     }
 
