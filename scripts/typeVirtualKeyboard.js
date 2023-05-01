@@ -35,9 +35,18 @@ let clickCapslockKey = (keyboard, flag) => {
   capsLockKey.classList.toggle("keyboard__key_active");
 };
 
-let clickSpecialKeys = (textarea, keyValue, keyboard) => {
-  let textCursorIndex = textarea.selectionStart;
-  let textareaValueArr = textarea.value.split("");
+let insertTextCharacter = (textarea, textareaValueArr, textCursorIndex, insertedValue) => {
+  let cursorCharacter = textareaValueArr[textCursorIndex - 1];
+  if (cursorCharacter) {
+    textareaValueArr[textCursorIndex - 1] = cursorCharacter + insertedValue;
+    let newTextareaValue = textareaValueArr.join("");
+    textarea.value = newTextareaValue;
+    let finishTextCursorIndex = textCursorIndex + insertedValue.length;
+    textarea.setSelectionRange(finishTextCursorIndex, finishTextCursorIndex);
+  } else textarea.value += insertedValue;
+};
+
+let clickSpecialKeys = (textarea, keyValue, keyboard, textCursorIndex, textareaValueArr) => {
   let simpleSpecialKeysObj = {
     Tab: "    ",
     Enter: "\n",
@@ -45,14 +54,8 @@ let clickSpecialKeys = (textarea, keyValue, keyboard) => {
   };
 
   if (simpleSpecialKeysObj[keyValue]) {
-    let currentCharacter = textareaValueArr[textCursorIndex - 1];
-    if (currentCharacter) {
-      textareaValueArr[textCursorIndex - 1] = currentCharacter + simpleSpecialKeysObj[keyValue];
-      let newTextareaValue = textareaValueArr.join("");
-      textarea.value = newTextareaValue;
-      let finishTextCursorIndex = textCursorIndex + simpleSpecialKeysObj[keyValue].length;
-      textarea.setSelectionRange(finishTextCursorIndex, finishTextCursorIndex);
-    } else textarea.value += simpleSpecialKeysObj[keyValue];
+    let insertedValue = simpleSpecialKeysObj[keyValue];
+    insertTextCharacter(textarea, textareaValueArr, textCursorIndex, insertedValue);
   } else {
     if (keyValue === "Backspace") removeCharacter(textarea, keyValue, textCursorIndex, textareaValueArr);
     if (keyValue === "Del") removeCharacter(textarea, keyValue, textCursorIndex, textareaValueArr);
@@ -71,15 +74,19 @@ let typeVirtualKeyboard = () => {
 
   keyboard.addEventListener("click", (event) => {
     let currentKey = event.target.closest(".keyboard__key");
+    let textCursorIndex = textarea.selectionStart;
+    let textareaValueArr = textarea.value.split("");
 
     if (!currentKey) return;
 
     let currentCharacter = currentKey.querySelector(".keyboard__character:not(.keyboard__character_disable)");
+    let keyValue = currentCharacter.textContent;
 
-    if (currentCharacter.textContent.length === 1) {
-      textarea.value += currentCharacter.textContent;
+    if (keyValue.length === 1) {
+      let insertedValue = keyValue;
+      insertTextCharacter(textarea, textareaValueArr, textCursorIndex, insertedValue);
     } else {
-      clickSpecialKeys(textarea, currentCharacter.textContent, keyboard);
+      clickSpecialKeys(textarea, keyValue, keyboard, textCursorIndex, textareaValueArr);
     }
   });
 };
