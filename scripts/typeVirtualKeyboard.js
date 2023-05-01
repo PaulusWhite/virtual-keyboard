@@ -9,7 +9,10 @@ let removeCharacter = (textarea, keyVlaue) => {
   let newTextareaValue = textareaValueArr.join("");
   textarea.value = "";
   textarea.value = newTextareaValue;
-  textarea.setSelectionRange(textCursor, textCursor);
+
+  if (keyVlaue === "Backspace") {
+    textarea.setSelectionRange(textCursor - 1, textCursor - 1);
+  } else textarea.setSelectionRange(textCursor, textCursor);
 };
 
 let clickCapslockKey = (keyboard, flag) => {
