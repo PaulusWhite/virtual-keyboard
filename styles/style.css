@@ -1,0 +1,70 @@
+body {
+  background-color: #f8d2ac; }
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 750px;
+  margin: 0 auto;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; }
+  .main .heading {
+    letter-spacing: 2px; }
+  .main .textarea {
+    width: 100%;
+    resize: none;
+    font-size: 18px; }
+  .main .keyboard {
+    width: 100%;
+    margin-top: 10px;
+    padding: 5px 5px 0 0;
+    border: solid #171718 2px;
+    background-color: #d1d1d1;
+    border-radius: 5px; }
+    .main .keyboard .keyboard__keyRow {
+      display: flex;
+      margin-bottom: 5px; }
+      .main .keyboard .keyboard__keyRow .keyboard__key {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 43px;
+        height: 43px;
+        margin-left: 5px;
+        border-radius: 3px;
+        background-color: #171718;
+        transition: 0.1s;
+        cursor: pointer; }
+        .main .keyboard .keyboard__keyRow .keyboard__key:hover {
+          background-color: #f53838; }
+        .main .keyboard .keyboard__keyRow .keyboard__key:active {
+          box-shadow: 0 0 7px 1px #f53838;
+          transform: scale(0.9); }
+        .main .keyboard .keyboard__keyRow .keyboard__key .keyboard__character,
+        .main .keyboard .keyboard__keyRow .keyboard__key .keyboard__shiftCharacter {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 20px;
+          color: #f8d2ac; }
+        .main .keyboard .keyboard__keyRow .keyboard__key .keyboard__character_disable,
+        .main .keyboard .keyboard__keyRow .keyboard__key .keyboard__shiftCharacter_disable {
+          display: none; }
+      .main .keyboard .keyboard__keyRow .keyboard__key_fullGrow {
+        flex-grow: 1; }
+      .main .keyboard .keyboard__keyRow .keyboard__key_mediumGrow {
+        flex-grow: 0.85; }
+      .main .keyboard .keyboard__keyRow .keyboard__key_littleGrow {
+        flex-grow: 0.036; }
+      .main .keyboard .keyboard__keyRow .keyboard__key_active {
+        background-color: #f53838;
+        box-shadow: 0 0 7px 1px #f53838;
+        transform: scale(0.9); }
+  .main .osInfo,
+  .main .shortcutInfo {
+    font-size: 18px; }
+  .main .shortcutInfo {
+    margin: 0; }
