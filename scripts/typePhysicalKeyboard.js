@@ -1,9 +1,10 @@
-import { clickCapslockKey, clickSpecialKeys } from "./typeVirtualKeyboard.js";
+import { clickCapslockKey, clickSpecialKeys, insertTextCharacter } from "./typeVirtualKeyboard.js";
 import { displayShiftCharacters } from "./clickShiftKey.js";
 
 let toggleKeyClass = (keyCode) => {
   if (keyCode === "CapsLock") return;
   let pressedKey = document.querySelector(`.keyboard__key[data-keycode=${keyCode}]`);
+  if (!pressedKey) return; //this is for non virtual keyboard keys
   pressedKey.classList.toggle("keyboard__key_active");
 };
 
@@ -19,26 +20,28 @@ let disableKeys = () => {
 let typePhysicalKeyboard = () => {
   let keyboard = document.querySelector(".keyboard");
   let textarea = document.querySelector(".textarea");
-
   let pressedKeys = {};
 
   document.addEventListener("keydown", (event) => {
+    event.preventDefault();
     let code = event.code;
+    let key = document.querySelector(`.keyboard__key[data-keycode=${code}]`);
+
+    if (!key) return; //this is for non virtual keyboard keys
+
+    let keyCharacter = key.querySelector("span:not(.keyboard__character_disable, .keyboard__shiftCharacter_disable)");
+    let insertedValue = keyCharacter.textContent;
     let textCursorIndex = textarea.selectionStart;
     let textareaValueArr = textarea.value.split("");
 
     if (
       code === "Tab" ||
-      code === "ControlLeft" ||
-      code === "ControlRight" ||
-      code === "AltLeft" ||
-      code === "AltRight"
+      code === "Enter" ||
+      code === "Space" ||
+      code === "Delete" ||
+      code === "Backspace" ||
+      code === "CapsLock"
     ) {
-      event.preventDefault();
-    }
-
-    if (code === "Tab") {
-      event.preventDefault();
       clickSpecialKeys(textarea, code, keyboard, textCursorIndex, textareaValueArr);
     }
 
@@ -48,7 +51,9 @@ let typePhysicalKeyboard = () => {
       displayShiftCharacters(keyboard);
       clickCapslockKey(keyboard, "falseClass");
     }
-    if (event.code === "CapsLock") clickCapslockKey(keyboard);
+
+    if (insertedValue.length === 1 && insertedValue !== " ")
+      insertTextCharacter(textarea, textareaValueArr, textCursorIndex, insertedValue);
 
     toggleKeyClass(event.code);
 

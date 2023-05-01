@@ -37,7 +37,6 @@ let clickCapslockKey = (keyboard, flag) => {
 };
 
 let insertTextCharacter = (textarea, textareaValueArr, textCursorIndex, insertedValue) => {
-  console.log(textareaValueArr);
   let cursorCharacter = textareaValueArr[textCursorIndex - 1];
   if (cursorCharacter) {
     textareaValueArr[textCursorIndex - 1] = cursorCharacter + insertedValue;
@@ -96,4 +95,4 @@ let typeVirtualKeyboard = () => {
   });
 };
 
-export { typeVirtualKeyboard, clickCapslockKey, clickSpecialKeys };
+export { typeVirtualKeyboard, clickCapslockKey, clickSpecialKeys, insertTextCharacter };
